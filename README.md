@@ -409,9 +409,8 @@ def approx_line_RDP(contour, max_d_allowed=1):
 
 ### Limitations/improvements
 
-*Fill this in*
-
-
+Some time could definitely be spent tweaking parameters making more complex filtering while simplifying the graph, to try to preserve as many vessels as possible while getting rid of noise artefacts.
+Better line approximations could be used. Some kind of parametric curve fit which can be inverted later to 'flatten' the vessel could be very useful for flow analysis.
 
 
 
