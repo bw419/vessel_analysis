@@ -78,27 +78,27 @@ A universal frame filename structure is assumed and stored in FRAME_FILENAME_TEM
 	- file name structure given by FRAME_FILENAME_TEMPLATE.
 	- folder path and file extension need to be provided only
 	  once in the program.'''
-def read_frame_i(i, input_folder=None, input_extension=None)
+def read_frame_i(i, input_folder=None, input_extension=None):
 
 ''' read a range of frames from start_n to end_n-1 inclusive.'''
-def get_frame_range_from_folder(input_folder, input_extension, start_n, end_n)
+def get_frame_range_from_folder(input_folder, input_extension, start_n, end_n):
 
 ''' read all frames from a folder.
 	assumes the folder only contains ordered images of same res.'''
-def get_frames_from_folder(input_folder)
+def get_frames_from_folder(input_folder):
 
 ''' write frames to video given by out_path.
 	currently unable to do lossless compression. '''
-def write_video_from_frames(frames, out_path)
+def write_video_from_frames(frames, out_path):
 
 '''	save frames into folder at folder_path.
 	creates this folder if it doesn't exist.
 	filenames are according to FRAME_FILENAME_TEMPLATE.
 	frame numbers are sequential, starting from start_n(=0). '''
-def save_frames_to_folder(frames, folder_path, start_n=0)
+def save_frames_to_folder(frames, folder_path, start_n=0):
 
 '''	for the purpose of testing stabilisation 'live'. '''
-def sim_async_input(frames, framerate, print_timing=False)
+def sim_async_input(frames, framerate, print_timing=False):
 ```
 
 ### Limitations/improvements
@@ -142,24 +142,24 @@ This module contains functions to stabilise frame sequences, with various option
 
 ```python
 ''' find upright rectangle containing only preserved pixels. '''
-def find_max_preserved_rect(border_mask)
+def find_max_preserved_rect(border_mask):
 
 ''' register two frames and find transform to stabilise them. '''
-def get_transform(frame, frame0, p0, downscale, mark_keypoints=False)
+def get_transform(frame, frame0, p0, downscale, mark_keypoints=False):
 
 ''' generator which yields successive stabilised frames. 
 	This is the core operation which would be used in the case of live stabilisation. '''
-def yield_stabilised(frames, split_score=0.3, crop=False, downscale=8, mark_keypoints=False, registration_filter=None)
+def yield_stabilised(frames, split_score=0.3, crop=False, downscale=8, mark_keypoints=False, registration_filter=None):
 
 ''' apply stabilisation to frame array. See above for details. '''
-def simple_stabilisation(frames, ignore_score=None, split_score=None, crop=False, downscale=8, mark_keypoints=False, registration_filter=None)
+def simple_stabilisation(frames, ignore_score=None, split_score=None, crop=False, downscale=8, mark_keypoints=False, registration_filter=None):
 
 
 ''' This was an attempt to detect relative motion of conjunctival
 	and scleral vessels and is based on an older version of the
 	simple_stabilisation function. 
 	Kept because it is a kind of proof-of-concept. '''
-def two_layer_stabilisation(frames, similarity_threshold=0)
+def two_layer_stabilisation(frames, similarity_threshold=0):
 ```
 
 ### Limitations/improvements
@@ -207,32 +207,32 @@ Image: From _Multiscale vessel enhancement ﬁltering_ (Frangi et al.)
 ```python
 ''' calculate and return Hessian matrix of the image 
 	for each pixel at a particular scale sigma.'''
-def get_hessian(img, sigma, force_separable_diff=False)
+def get_hessian(img, sigma, force_separable_diff=False):
 
 ''' compare Hessian eigenvalues at each pixel to give a 'vesselness' score. '''
-def get_vesselness(hessian, beta=1, gamma=15, c=None)
+def get_vesselness(hessian, beta=1, gamma=15, c=None):
 
 ''' apply a Frangi vesselness filter to the frame, taking the maximum response
 	for each pixel over the range of scales given by sigmas.'''
-def apply_frangi(frame, sigmas=[1,2,3,5], beta=1, gamma=None, c=None, scale_dependence=0, return_eigens=False)
+def apply_frangi(frame, sigmas=[1,2,3,5], beta=1, gamma=None, c=None, scale_dependence=0, return_eigens=False):
 
 
 #---------------------- unused functions: ----------------------#
 ''' initial attempt at filtering images.
 	not particularly theoretically justified but does an OK job.
 	better methods are below. '''
-def filter_raw_img(grey)
+def filter_raw_img(grey):
 
 ''' test application of anisotropic_blur '''
-def test()
+def test():
 
 ''' this function does seem to blur as intended in tests but it doesn't give good results. '''
-def anisotropic_blur(frame, vesselness, w, omega=2, epsilon=0.01, sensitivity=1, kernel_rad=3, cos_scale=0)
+def anisotropic_blur(frame, vesselness, w, omega=2, epsilon=0.01, sensitivity=1, kernel_rad=3, cos_scale=0):
 
 ''' this function doesn't work.
 	D tensor construction is fine but application of diffusion equation
 	leads to instabilities - sharp black and white 1-pixel-wide bands '''
-def VED_step(frame, vesselness, e_vecs)
+def VED_step(frame, vesselness, e_vecs):
 ```
 
 ### Limitations/improvements
@@ -325,25 +325,25 @@ The intended processing order is:
 	- img: base image to draw the rest on
 	- colorcode: contour colour depends on its score
 	- dilate: make nodes slightly larger '''
-def graph_to_img(G, img, dilate=False, colorcode=False)
+def graph_to_img(G, img, dilate=False, colorcode=False):
 
 ''' create an image to display from skeleton features. 
 	- img: base image to draw the rest on'''
-def features_to_img(img, joints, ends, edges)
+def features_to_img(img, joints, ends, edges):
 
 ''' apply Guo-Hall thinning algorithm. 
 	- remove_borders: if True, removes border artefacts on initial
 	  skeletonisation by setting all border values to 0. '''
-def skeletonisation(img, remove_borders=False)
+def skeletonisation(img, remove_borders=False):
 
 ''' utility functions to complete the set. '''
-def skel_to_graph(skel)
-def graph_to_skel(G, shape, simplify=False)
+def skel_to_graph(skel):
+def graph_to_skel(G, shape, simplify=False):
 
 ''' combine joints, ends and edges.
 	- simplify: it True, dilate nodes and then entire skeleton before 
 	  re-thinning to get rid of mini spurs and help connect gaps. '''
-def features_to_skel(joints, ends, edges, simplify=False)
+def features_to_skel(joints, ends, edges, simplify=False):
 
 ''' find the morphological skeleton features:
 	do so via convolution for speed (as opencv operations are in c):
@@ -354,57 +354,57 @@ def features_to_skel(joints, ends, edges, simplify=False)
 	- pixels connected to 1 other are considered ends (thresh: >10 but not >11)
 	- pixels connected to 2 others are considered edges (thresh: >11 but not >12)
 	- pixels connected to 3+ others are considered joints (thresh: >12).  '''
-def skel_to_features(skel)
+def skel_to_features(skel):
 
 ''' Draw joints, ends, and edges from a graph object. '''
-def graph_to_features(G, shape)
+def graph_to_features(G, shape):
 
 ''' construct graph object from joints, ends, and edges. 
 	this involves figuring out connectivity of joints to ends or edges.
 	edge and node max intensity scores and edge lengths are stored as attributes. '''
-def features_to_graph(joints, ends, edges)
+def features_to_graph(joints, ends, edges):
 
 ''' set graph nodes/edges' scores to the maximum of the scores
 	of their connected nodes/edges. This is a kind of 'diffusion' process. '''
-def spread_scores(G, iterations=1)
+def spread_scores(G, iterations=1):
 
 ''' remove graph edges which do not meet certain requirements.
 	spurs are edges with a 'joint' on one side and an 'end' on the other.
 	free segments are edges with an 'end' on both sides.
 	- an edge shorter than min_length requires at least keep_score to not be removed.
 	- an edge with a score below remove_score is removed. '''
-def prune_graph(G, min_spur_length, keep_spur_score, remove_spur_score, min_free_segment_length, keep_free_segment_score, remove_free_segment_score)
+def prune_graph(G, min_spur_length, keep_spur_score, remove_spur_score, min_free_segment_length, keep_free_segment_score, remove_free_segment_score):
 
 ''' remove edges which don't satisfy the condition
 	imposed by filter_fn. '''
-def filter_graph_edges(G, filter_fn)
+def filter_graph_edges(G, filter_fn):
 
 ''' remove unconnected nodes '''
-def remove_unconnected(G)
+def remove_unconnected(G):
 
 ''' order the pixels of a contour along a vessel 
 	- this is achieved by starting at first_pt and
 	  repeatedly finding the closest pixel. '''
-def ordered_cnt_pixels(contour, first_pt)
+def ordered_cnt_pixels(contour, first_pt):
 
 ''' order the pixels of all contours in the graph '''
-def order_graph_cnt_pixels(G)
+def order_graph_cnt_pixels(G):
 
 ''' approximate each vessel as a chain of straight lines
 	and store for each edge as a "point chain" attribute. '''
-def make_graph_line_chains(G, max_deviation=2)
+def make_graph_line_chains(G, max_deviation=2):
 
 ''' construct and prune the skeleton for several iterations. '''
-def simplify_graph(G, shape, params=None)
+def simplify_graph(G, shape, params=None):
 
 
 #---------------------- unused functions: ----------------------#
 ''' perpendicular distance of pt from the line connecting start and end. '''
-def perp_dist(start, end, pt)
+def perp_dist(start, end, pt):
 
 ''' approximate contours with the Ramer-Douglas-Peucker algorithm
 	implemented manually in Python. '''
-def approx_line_RDP(contour, max_d_allowed=1)
+def approx_line_RDP(contour, max_d_allowed=1):
 ```
 
 ### Limitations/improvements
@@ -469,43 +469,43 @@ _Note: The functions in this module have not been well-tested and are not wholly
 ```python
 ''' currently this just creates x and y second derivatives at 
 	spatial scale sigma (which are added together to give a Laplacian) '''
-def get_filter_bank(sigma)
+def get_filter_bank(sigma):
 
 ''' build a filter bank from the get_filter_bank function
 	and then apply each to the vessel, stacking outputs along
 	the y-axis if there is more than one filter. '''
-def filter_vessel_internal(frames)
+def filter_vessel_internal(frames):
 
 ''' search before and after an index to find when the 
 	array value first drops below cutoff_val. '''
-def get_peak_start_end_idx(y, peak_idx, cutoff_val)
+def get_peak_start_end_idx(y, peak_idx, cutoff_val):
 
 ''' fit a sigmoid pulse function to a filtered vessel
 	to obtain its centre, width, and boundary indices. '''
-def get_vessel_boundaries(filtered_img, show_graph=False)
+def get_vessel_boundaries(filtered_img, show_graph=False):
 
 ''' calculate correlation of each frame relative to the next
 	as it is shifted by different numbers up pixels sideways
 	up to a maximum of slide_dist in each direction. 
 	This is done separately for each pixel along the cross-
 	section of the vessel. '''
-def get_shift_correlation(frames, slide_dist, plot_3d=False)
+def get_shift_correlation(frames, slide_dist, plot_3d=False):
 
 ''' from correlation vs. shift data at different positions 
 	along the cross-section of the vessel, find the position
 	of the peak value to obtain a velocity profile. '''
-def extract_flow_profile(correlations, plot_peaks=False, plot_v_profile=False)
+def extract_flow_profile(correlations, plot_peaks=False, plot_v_profile=False):
 
 ''' return a function transforming a frame so that a vessel
 	(between two points) is horizontal and crop to that vessel'''
-def get_vessel_centering_fn(pts)
+def get_vessel_centering_fn(pts):
 
 ''' get the difference of each frame from the mean frame '''
-def get_frame_deltas(frames):
+def get_frame_deltas(frames)::
 
 ''' given all necessary data, attempt to extract relevant information
 	including velocity profile and vessel thickness. '''
-def data_from_vessel_pts(pts, mean, filtered, frames, max_slide, show_graphs=True, space_time_image=False)
+def data_from_vessel_pts(pts, mean, filtered, frames, max_slide, show_graphs=True, space_time_image=False):
 ```
 
 ### Limitations/improvements
