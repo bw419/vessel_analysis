@@ -189,7 +189,7 @@ This module implements a Frangi vesselness filter. It also unsuccessfully attemp
 
 Image: From _Multiscale vessel enhancement ﬁltering_ (Frangi et al.)
 
-![frangi_eig_vals](.\frangi_eig_vals.png)
+![frangi_eig_vals](./frangi_eig_vals.png)
 
 ***
 
@@ -245,11 +245,11 @@ Currently I have moved most of the filtering of background noise towards the ske
 
 Image: output of Frangi filter for a full image, colour-mapped by vesselness score.
 
-![frangi_output](.\outputs\frangi_output.png)
+![frangi_output](./outputs/frangi_output.png)
 
 Image: output of Frangi filter in a small area, with dominant eigenvectors superimposed.
 
-![frangi_output_evecs](.\outputs\evecs_superimposed.png)
+![frangi_output_evecs](./outputs/evecs_superimposed.png)
 
 
 
@@ -265,7 +265,7 @@ This module contains methods to extract the morphology of the vessels, via thinn
 
 Image: skeletonised output of Frangi filter.
 
-![skeletonised_frangi](.\outputs\skeletonised_frangi.png)
+![skeletonised_frangi](./outputs/skeletonised_frangi.png)
 
 ***
 
@@ -419,7 +419,7 @@ def approx_line_RDP(contour, max_d_allowed=1):
 
 Image: Network drawn from graph after line-chain-approximating vessels.
 
-![chain_approxed](.\outputs\chain_approxed.png)
+![chain_approxed](./outputs/chain_approxed.png)
 
 ***
 
@@ -525,7 +525,7 @@ There are several ways that `get_shift_correlation` and the flow analysis in gen
 
 Image: Output of automatic flow velocity extraction. Peak velocities are labelled. Evidently reliability is not particularly high without manual inspection.
 
-![labelled_velocities](.\outputs\labelled_velocities.png)
+![labelled_velocities](./outputs/labelled_velocities.png)
 
 ***
 
