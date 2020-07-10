@@ -4,3 +4,6 @@
 *.pgm
 *.tif
 *.pyc
+*.mp4
+!outputs/**
+!frangi_eig_vals.png
