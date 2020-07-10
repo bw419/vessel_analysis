@@ -1,0 +1,26 @@
+Meaning of delivery/drainage fields and projection (seems to just mean overlap -> blood delivered by one vessel is same blood that arrives in another)
+
+
+
+From new papers...
+- FWHM for vessel diameter
+- Steps for skeletonisation
+
+
+Bit about functional apex in episcleral arterial circle arcade - stationary point?
+
+
+
+Necessary to save as bitmap to avoid compression with opencv. Saving as .tif compresses behind the scenes.
+
+
+
+Relevant papers:
+Divergence Compensatory Optical Flow Method for Blood Velocimetry
+Comparison between optical flow and cross-correlation methods for extraction of velocity fields from particle images
+Chapter 12 - Skeleton-based fast, fully automated generation of vessel tree structure for clinical evaluation of blood vessel systems
+
+
+A review of nonlinear diffusion filtering
+Multiscale Vessel Enhancement Filtering - for how to calculate the Hessian
+VED is algorithm used
