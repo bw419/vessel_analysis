@@ -189,7 +189,7 @@ This module implements a Frangi vesselness filter. It also unsuccessfully attemp
 
 Image: From _Multiscale vessel enhancement ﬁltering_ (Frangi et al.)
 
-![frangi_eig_vals](.\frangi_eig_vals.png)
+![frangi_eig_vals](frangi_eig_vals.png)
 
 ***
 
