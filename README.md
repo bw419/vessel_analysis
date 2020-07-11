@@ -219,8 +219,7 @@ def apply_frangi(frame, sigmas=[1,2,3,5], beta=1, gamma=None, c=None, scale_depe
 
 #---------------------- unused functions: ----------------------#
 ''' initial attempt at filtering images.
-	not particularly theoretically justified but does an OK job.
-	better methods are below. '''
+	not particularly theoretically justified but does an OK job. '''
 def filter_raw_img(grey):
 
 ''' test application of anisotropic_blur '''
